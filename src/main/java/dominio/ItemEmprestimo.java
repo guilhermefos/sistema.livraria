@@ -1,7 +1,10 @@
 package dominio;
 
-public class ItemEmprestimo {
+import java.io.Serializable;
+
+public class ItemEmprestimo implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	// Internal Variables
 	private Integer codItemEmprestimo;
 	private Integer quantidade;
