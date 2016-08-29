@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,6 +23,7 @@ public class Editora implements Serializable {
 	private String nome;
 	
 	// Relationship Variables
+	@OneToMany(mappedBy="editora")
 	private List<Livro>livros;
 	
 	public Editora()
