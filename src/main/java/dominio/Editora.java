@@ -1,5 +1,6 @@
 package dominio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Editora {
@@ -10,5 +11,19 @@ public class Editora {
 	
 	// Relationship Variables
 	private List<Livro>livros;
+	
+	public Editora()
+	{
+		this.livros = new ArrayList<>();
+	}
+
+	public Editora(Integer codEditora, String nome) {
+		super();
+		this.codEditora = codEditora;
+		this.nome = nome;
+		this.livros = new ArrayList<>();
+	}
+	
+	
 
 }
