@@ -1,11 +1,13 @@
 package dominio;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Livro {
+public class Livro implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
 	// Internal Variables
 	private Integer codLivro;
 	private String titulo, isbn;
