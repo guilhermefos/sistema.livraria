@@ -1,10 +1,12 @@
 package dominio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Categoria {
+public class Categoria implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
 	// Internal Variables
 	private Integer codCategoria;
 	private String nome;
