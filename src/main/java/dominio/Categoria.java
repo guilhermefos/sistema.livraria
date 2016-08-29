@@ -65,6 +65,14 @@ public class Categoria {
 	public void setLivros(List<Livro> livros) {
 		this.livros = livros;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Categoria [codCategoria=" + codCategoria + ", nome=" + nome + "]";
+	}
 	
 	
 
