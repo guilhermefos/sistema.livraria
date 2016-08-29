@@ -73,6 +73,42 @@ public class Editora {
 	public String toString() {
 		return "Editora [codEditora=" + codEditora + ", nome=" + nome + "]";
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codEditora == null) ? 0 : codEditora.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof Editora)) {
+			return false;
+		}
+		Editora other = (Editora) obj;
+		if (codEditora == null) {
+			if (other.codEditora != null) {
+				return false;
+			}
+		} else if (!codEditora.equals(other.codEditora)) {
+			return false;
+		}
+		return true;
+	}
 	
 	
 
