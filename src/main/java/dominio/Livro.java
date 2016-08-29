@@ -146,6 +146,15 @@ public class Livro {
 	public void setItens(List<ItemEmprestimo> itens) {
 		this.itens = itens;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Livro [codLivro=" + codLivro + ", titulo=" + titulo + ", isbn=" + isbn + ", paginas=" + paginas
+				+ ", valorDiario=" + valorDiario + ", editora=" + editora + ", categoria=" + categoria + "]";
+	}
 	
 	
 	
