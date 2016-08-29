@@ -28,6 +28,77 @@ public class Emprestimo {
 		this.cliente = cliente;
 		this.itens = new ArrayList<>();
 	}
+
+	/**
+	 * @return the codEmprestimo
+	 */
+	public Integer getCodEmprestimo() {
+		return codEmprestimo;
+	}
+
+	/**
+	 * @param codEmprestimo the codEmprestimo to set
+	 */
+	public void setCodEmprestimo(Integer codEmprestimo) {
+		this.codEmprestimo = codEmprestimo;
+	}
+
+	/**
+	 * @return the dataEmprestimo
+	 */
+	public Date getDataEmprestimo() {
+		return dataEmprestimo;
+	}
+
+	/**
+	 * @param dataEmprestimo the dataEmprestimo to set
+	 */
+	public void setDataEmprestimo(Date dataEmprestimo) {
+		this.dataEmprestimo = dataEmprestimo;
+	}
+
+	/**
+	 * @return the duracaoEmDias
+	 */
+	public Integer getDuracaoEmDias() {
+		return duracaoEmDias;
+	}
+
+	/**
+	 * @param duracaoEmDias the duracaoEmDias to set
+	 */
+	public void setDuracaoEmDias(Integer duracaoEmDias) {
+		this.duracaoEmDias = duracaoEmDias;
+	}
+
+	/**
+	 * @return the cliente
+	 */
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	/**
+	 * @param cliente the cliente to set
+	 */
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	/**
+	 * @return the itens
+	 */
+	public List<ItemEmprestimo> getItens() {
+		return itens;
+	}
+
+	/**
+	 * @param itens the itens to set
+	 */
+	public void setItens(List<ItemEmprestimo> itens) {
+		this.itens = itens;
+	}
+
 	
 	
 
