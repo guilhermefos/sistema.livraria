@@ -24,4 +24,48 @@ public class Categoria {
 		this.livros = new ArrayList<>();
 	}
 
+	/**
+	 * @return the codCategoria
+	 */
+	public Integer getCodCategoria() {
+		return codCategoria;
+	}
+
+	/**
+	 * @param codCategoria the codCategoria to set
+	 */
+	public void setCodCategoria(Integer codCategoria) {
+		this.codCategoria = codCategoria;
+	}
+
+	/**
+	 * @return the nome
+	 */
+	public String getNome() {
+		return nome;
+	}
+
+	/**
+	 * @param nome the nome to set
+	 */
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	/**
+	 * @return the livros
+	 */
+	public List<Livro> getLivros() {
+		return livros;
+	}
+
+	/**
+	 * @param livros the livros to set
+	 */
+	public void setLivros(List<Livro> livros) {
+		this.livros = livros;
+	}
+	
+	
+
 }
