@@ -154,6 +154,42 @@ public class Cliente {
 		return "Cliente [codCliente=" + codCliente + ", nome=" + nome + ", cpf=" + cpf + ", fone=" + fone + ", email="
 				+ email + ", nascimento=" + nascimento + ", rendaMensal=" + rendaMensal + "]";
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codCliente == null) ? 0 : codCliente.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof Cliente)) {
+			return false;
+		}
+		Cliente other = (Cliente) obj;
+		if (codCliente == null) {
+			if (other.codCliente != null) {
+				return false;
+			}
+		} else if (!codCliente.equals(other.codCliente)) {
+			return false;
+		}
+		return true;
+	}
 	
 	
 }
