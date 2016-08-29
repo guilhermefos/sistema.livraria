@@ -73,6 +73,42 @@ public class Categoria {
 	public String toString() {
 		return "Categoria [codCategoria=" + codCategoria + ", nome=" + nome + "]";
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codCategoria == null) ? 0 : codCategoria.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof Categoria)) {
+			return false;
+		}
+		Categoria other = (Categoria) obj;
+		if (codCategoria == null) {
+			if (other.codCategoria != null) {
+				return false;
+			}
+		} else if (!codCategoria.equals(other.codCategoria)) {
+			return false;
+		}
+		return true;
+	}
 	
 	
 
