@@ -1,6 +1,7 @@
 package dominio;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -122,6 +123,21 @@ public class Editora implements Serializable {
 			return false;
 		}
 		return true;
+	}
+	
+	public Livro livroMaisCaro()
+	{
+		BigDecimal maisCaro = new BigDecimal("0.00");
+		Livro livro = null;
+		
+		for(Livro l : this.livros)
+		{
+			if(l.getValorDiario().compareTo(maisCaro) > 0)
+			{
+				livro = l;
+			}
+		}
+		return livro;
 	}
 	
 	
