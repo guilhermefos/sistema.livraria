@@ -1,12 +1,14 @@
 package dominio;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Cliente {
+public class Cliente implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	// Internal Variables
 	private Integer codCliente;
 	private String nome, cpf, fone, email;
