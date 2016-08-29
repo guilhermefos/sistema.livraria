@@ -84,6 +84,42 @@ public class ItemEmprestimo {
 		return "ItemEmprestimo [codItemEmprestimo=" + codItemEmprestimo + ", quantidade=" + quantidade + ", livro="
 				+ livro + ", emprestimo=" + emprestimo + "]";
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codItemEmprestimo == null) ? 0 : codItemEmprestimo.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof ItemEmprestimo)) {
+			return false;
+		}
+		ItemEmprestimo other = (ItemEmprestimo) obj;
+		if (codItemEmprestimo == null) {
+			if (other.codItemEmprestimo != null) {
+				return false;
+			}
+		} else if (!codItemEmprestimo.equals(other.codItemEmprestimo)) {
+			return false;
+		}
+		return true;
+	}
 	
 	
 
