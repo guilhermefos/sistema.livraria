@@ -145,9 +145,15 @@ public class Cliente {
 	public void setEmprestimos(List<Emprestimo> emprestimos) {
 		this.emprestimos = emprestimos;
 	}
-	
-	
-	
-	
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Cliente [codCliente=" + codCliente + ", nome=" + nome + ", cpf=" + cpf + ", fone=" + fone + ", email="
+				+ email + ", nascimento=" + nascimento + ", rendaMensal=" + rendaMensal + "]";
+	}
+	
+	
 }
