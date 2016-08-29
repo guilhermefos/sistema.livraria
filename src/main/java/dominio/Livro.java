@@ -9,6 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,8 +28,13 @@ public class Livro implements Serializable{
 	private BigDecimal valorDiario;
 	
 	// Relationship Variables
+	@ManyToOne
+	@JoinColumn(name="editora")
 	private Editora editora;
+	@ManyToOne
+	@JoinColumn(name="categoria")
 	private Categoria categoria;
+	@OneToMany(mappedBy="livro")
 	private List<ItemEmprestimo> itens;
 	
 	public Livro()
