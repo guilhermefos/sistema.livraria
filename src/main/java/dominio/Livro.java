@@ -17,7 +17,7 @@ public class Livro {
 	private Categoria categoria;
 	private List<ItemEmprestimo> itens;
 	
-	private Livro()
+	public Livro()
 	{
 		this.itens = new ArrayList<>();
 	}
