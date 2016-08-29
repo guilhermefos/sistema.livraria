@@ -155,6 +155,42 @@ public class Livro {
 		return "Livro [codLivro=" + codLivro + ", titulo=" + titulo + ", isbn=" + isbn + ", paginas=" + paginas
 				+ ", valorDiario=" + valorDiario + ", editora=" + editora + ", categoria=" + categoria + "]";
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codLivro == null) ? 0 : codLivro.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof Livro)) {
+			return false;
+		}
+		Livro other = (Livro) obj;
+		if (codLivro == null) {
+			if (other.codLivro != null) {
+				return false;
+			}
+		} else if (!codLivro.equals(other.codLivro)) {
+			return false;
+		}
+		return true;
+	}
 	
 	
 	
