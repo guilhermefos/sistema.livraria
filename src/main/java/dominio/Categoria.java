@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,6 +23,7 @@ public class Categoria implements Serializable{
 	private String nome;
 	
 	// Relationship Variables
+	@OneToMany(mappedBy="categoria")
 	private List<Livro>livros;
 	
 	public Categoria()
