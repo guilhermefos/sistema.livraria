@@ -1,5 +1,12 @@
 package dao;
 
+import dao.impl.CategoriaDaoImpl;
+import dao.impl.ClienteDaoImpl;
+import dao.impl.EditoraDaoImpl;
+import dao.impl.EmprestimoDaoImpl;
+import dao.impl.ItemEmprestimoDaoImpl;
+import dao.impl.LivroDaoImpl;
+
 public class DaoFactory {
 	
 	public static LivroDao criarLivroDao() {
