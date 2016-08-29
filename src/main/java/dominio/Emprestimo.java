@@ -1,11 +1,13 @@
 package dominio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Emprestimo {
+public class Emprestimo implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
 	// Internal Variables
 	private Integer codEmprestimo;
 	private Date dataEmprestimo;
