@@ -108,6 +108,42 @@ public class Emprestimo {
 				+ duracaoEmDias + ", cliente=" + cliente + "]";
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codEmprestimo == null) ? 0 : codEmprestimo.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof Emprestimo)) {
+			return false;
+		}
+		Emprestimo other = (Emprestimo) obj;
+		if (codEmprestimo == null) {
+			if (other.codEmprestimo != null) {
+				return false;
+			}
+		} else if (!codEmprestimo.equals(other.codEmprestimo)) {
+			return false;
+		}
+		return true;
+	}
+
 	
 	
 
