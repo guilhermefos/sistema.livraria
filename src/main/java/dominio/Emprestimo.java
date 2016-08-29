@@ -99,6 +99,15 @@ public class Emprestimo {
 		this.itens = itens;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Emprestimo [codEmprestimo=" + codEmprestimo + ", dataEmprestimo=" + dataEmprestimo + ", duracaoEmDias="
+				+ duracaoEmDias + ", cliente=" + cliente + "]";
+	}
+
 	
 	
 
