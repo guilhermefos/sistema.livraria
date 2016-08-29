@@ -75,6 +75,15 @@ public class ItemEmprestimo {
 	public void setEmprestimo(Emprestimo emprestimo) {
 		this.emprestimo = emprestimo;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "ItemEmprestimo [codItemEmprestimo=" + codItemEmprestimo + ", quantidade=" + quantidade + ", livro="
+				+ livro + ", emprestimo=" + emprestimo + "]";
+	}
 	
 	
 
