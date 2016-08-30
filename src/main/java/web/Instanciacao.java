@@ -130,7 +130,7 @@ public class Instanciacao extends HttpServlet {
 			ies.inserirAtualizar(im10);
 			
 			
-			response.getWriter().append("Fim");
+			response.getWriter().append("<br>Fim");
 		
 		}
 		catch (ParseException e) {
