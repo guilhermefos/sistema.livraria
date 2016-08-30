@@ -141,5 +141,9 @@ public class ItemEmprestimo implements Serializable {
 		return true;
 	}
 	
+	public BigDecimal subTotal()
+	{
+		return this.livro.getValorDiario().multiply(new BigDecimal(getQuantidade()));
+	}
 
 }
