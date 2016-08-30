@@ -1,6 +1,7 @@
 package dominio;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -161,6 +162,17 @@ public class Emprestimo implements Serializable{
 			return false;
 		}
 		return true;
+	}
+	
+	public BigDecimal valorTotal()
+	{
+		BigDecimal sum = new BigDecimal("0.00");
+		
+		for(ItemEmprestimo item: this.itens)
+		{
+			sum.add(item.subTotal().multiply(new BigDecimal(this.getDuracaoEmDias())));
+		}
+		return sum;
 	}
 
 	
