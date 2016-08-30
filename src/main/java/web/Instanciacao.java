@@ -15,8 +15,14 @@ import dominio.Categoria;
 import dominio.Cliente;
 import dominio.Editora;
 import dominio.Emprestimo;
+import dominio.ItemEmprestimo;
 import dominio.Livro;
+import servico.CategoriaServico;
 import servico.ClienteServico;
+import servico.EditoraServico;
+import servico.EmprestimoServico;
+import servico.ItemEmprestimoServico;
+import servico.LivroServico;
 
 
 /**
@@ -30,7 +36,8 @@ public class Instanciacao extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-				
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 		try {
 			
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -59,15 +66,68 @@ public class Instanciacao extends HttpServlet {
 			Livro l10 = new Livro(null, "PLATAO", "", 400, new BigDecimal("20.00"), e3, ct2);
 			
 			Emprestimo em1 = new Emprestimo(null, sdf.parse("29/08/1989"), 3, c1);
-			Emprestimo em2 = new Emprestimo(null, sdf.parse("29/08/1989"), 3, c1);
-			Emprestimo em3 = new Emprestimo(null, sdf.parse("29/08/1989"), 3, c1);
+			Emprestimo em2 = new Emprestimo(null, sdf.parse("29/08/1989"), 3, c2);
+			Emprestimo em3 = new Emprestimo(null, sdf.parse("29/08/1989"), 3, c3);
 			Emprestimo em4 = new Emprestimo(null, sdf.parse("29/08/1989"), 3, c1);
 			Emprestimo em5 = new Emprestimo(null, sdf.parse("29/08/1989"), 3, c1);
 			
+			ItemEmprestimo im1 = new ItemEmprestimo(null, 10, l1, em1);
+			ItemEmprestimo im2 = new ItemEmprestimo(null, 10, l2, em1);
+			ItemEmprestimo im3 = new ItemEmprestimo(null, 10, l3, em2);
+			ItemEmprestimo im4 = new ItemEmprestimo(null, 10, l4, em2);
+			ItemEmprestimo im5 = new ItemEmprestimo(null, 10, l7, em3);
+			ItemEmprestimo im6 = new ItemEmprestimo(null, 10, l5, em3);
+			ItemEmprestimo im7 = new ItemEmprestimo(null, 10, l6, em4);
+			ItemEmprestimo im8 = new ItemEmprestimo(null, 10, l8, em4);
+			ItemEmprestimo im9 = new ItemEmprestimo(null, 10, l10, em5);
+			ItemEmprestimo im10 = new ItemEmprestimo(null, 10, l9, em5);
 			
-			ClienteServico cs1 = new ClienteServico();
 			
-			cs1.inserirAtualizar(c1);
+			ClienteServico cs = new ClienteServico();
+			cs.inserirAtualizar(c1);
+			cs.inserirAtualizar(c2);
+			cs.inserirAtualizar(c3);
+			
+			EditoraServico es = new EditoraServico();
+			es.inserirAtualizar(e1);
+			es.inserirAtualizar(e2);
+			es.inserirAtualizar(e3);
+			
+			CategoriaServico cts = new CategoriaServico();
+			cts.inserirAtualizar(ct1);
+			cts.inserirAtualizar(ct2);
+			cts.inserirAtualizar(ct3);
+			
+			LivroServico ls = new LivroServico();
+			ls.inserirAtualizar(l1);
+			ls.inserirAtualizar(l2);
+			ls.inserirAtualizar(l3);
+			ls.inserirAtualizar(l4);
+			ls.inserirAtualizar(l5);
+			ls.inserirAtualizar(l6);
+			ls.inserirAtualizar(l7);
+			ls.inserirAtualizar(l8);
+			ls.inserirAtualizar(l9);
+			ls.inserirAtualizar(l10);
+			
+			EmprestimoServico eps = new EmprestimoServico();
+			eps.inserirAtualizar(em1);
+			eps.inserirAtualizar(em2);
+			eps.inserirAtualizar(em3);
+			eps.inserirAtualizar(em4);
+			eps.inserirAtualizar(em5);
+			
+			ItemEmprestimoServico ies = new ItemEmprestimoServico();
+			ies.inserirAtualizar(im1);
+			ies.inserirAtualizar(im2);
+			ies.inserirAtualizar(im3);
+			ies.inserirAtualizar(im4);
+			ies.inserirAtualizar(im5);
+			ies.inserirAtualizar(im6);
+			ies.inserirAtualizar(im7);
+			ies.inserirAtualizar(im8);
+			ies.inserirAtualizar(im9);
+			ies.inserirAtualizar(im10);
 			
 			
 			response.getWriter().append("Fim");
@@ -77,7 +137,6 @@ public class Instanciacao extends HttpServlet {
 			System.out.println("Erro: " + e.getMessage());
 		}
 		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 }
