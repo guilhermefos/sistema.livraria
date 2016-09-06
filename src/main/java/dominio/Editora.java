@@ -135,6 +135,7 @@ public class Editora implements Serializable {
 			if(l.getValorDiario().compareTo(maisCaro) > 0)
 			{
 				livro = l;
+				maisCaro.add(l.getValorDiario());
 			}
 		}
 		return livro;
