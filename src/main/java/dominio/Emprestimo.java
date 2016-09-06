@@ -170,9 +170,9 @@ public class Emprestimo implements Serializable{
 		
 		for(ItemEmprestimo item: this.itens)
 		{
-			sum.add(item.subTotal().multiply(new BigDecimal(this.getDuracaoEmDias())));
+			sum.add(item.subTotal());
 		}
-		return sum;
+		return sum.multiply(new BigDecimal(this.getDuracaoEmDias()));
 	}
 
 	
