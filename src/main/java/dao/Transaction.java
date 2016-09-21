@@ -14,5 +14,16 @@ public class Transaction {
 	{
 		EM.getLocalEm().getTransaction().begin();
 	}
+	
+	/**
+	 * Commit marks the end of a successful implicit or explicit transaction
+	 * 
+	 * @return void
+	 * 
+	 */
+	public static void commit()
+	{
+		EM.getLocalEm().getTransaction().commit();
+	}
 
 }
