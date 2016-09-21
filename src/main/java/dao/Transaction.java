@@ -25,5 +25,18 @@ public class Transaction {
 	{
 		EM.getLocalEm().getTransaction().commit();
 	}
+	
+	/**
+	 * 
+	 * statement to rollback the transaction meaning 
+	 * that none of the data actually changed
+	 * 
+	 * @return void
+	 * 
+	 */
+	public static void rollback()
+	{
+		EM.getLocalEm().getTransaction().rollback();
+	}
 
 }
