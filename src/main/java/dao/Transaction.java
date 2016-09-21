@@ -38,5 +38,15 @@ public class Transaction {
 	{
 		EM.getLocalEm().getTransaction().rollback();
 	}
+	
+	/**
+	 * 
+	 * Verify if transaction is Active
+	 * @return
+	 */
+	public static boolean isActive()
+	{
+		return EM.getLocalEm().getTransaction().isActive();
+	}
 
 }
