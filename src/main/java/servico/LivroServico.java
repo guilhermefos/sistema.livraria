@@ -78,7 +78,15 @@ public class LivroServico {
 		return dao.buscar(cod);
 	}
 	
-	public List<Livro> buscarTodos() {
+	/**
+	 * 
+	 * Select all Livro objects
+	 * 
+	 * @return List of Livro objects
+	 * 
+	 */
+	public List<Livro> buscarTodos() 
+	{
 		return dao.buscarTodos();
 	}
 
