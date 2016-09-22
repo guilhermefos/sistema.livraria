@@ -40,11 +40,28 @@ public class EditoraServico {
 		}
 	}
 	
-	
-	public void excluir(Editora x) {
-		EM.getLocalEm().getTransaction().begin();
-		dao.excluir(x);
-		EM.getLocalEm().getTransaction().commit();
+	/**
+	 * 
+	 * Delete Editora object
+	 * 
+	 * @param x Editora object from delete
+	 * 
+	 * @return void
+	 * 
+	 */
+	public void excluir(Editora x) 
+	{
+		try
+		{
+			Transaction.begin();
+			dao.excluir(x);
+			Transaction.commit();
+		}
+		catch(RuntimeException e)
+		{
+			Transaction.rollback();
+			System.out.println("Erro: " + e.getMessage());
+		}
 	}
 	
 	public Editora buscar(int cod) {
