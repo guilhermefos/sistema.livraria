@@ -21,7 +21,7 @@ public class ClienteServico {
 	 * 
 	 * Insert or Update Client object
 	 * 
-	 * @param x Client object from update
+	 * @param x Cliente object from update
 	 * 
 	 * @return void
 	 * 
@@ -41,10 +41,28 @@ public class ClienteServico {
 		}
 	}
 	
-	public void excluir(Cliente x) {
-		EM.getLocalEm().getTransaction().begin();
-		dao.excluir(x);
-		EM.getLocalEm().getTransaction().commit();
+	/**
+	 * 
+	 * Delete Cliente object
+	 * 
+	 * @param x Cliente object from delete
+	 * 
+	 * @return void
+	 * 
+	 */
+	public void excluir(Cliente x)
+	{
+		try
+		{
+			Transaction.begin();
+			dao.excluir(x);
+			Transaction.commit();
+		}
+		catch(RuntimeException e)
+		{
+			Transaction.rollback();
+			System.out.println("Erro: " + e.getMessage());
+		}
 	}
 	
 	public Cliente buscar(int cod) {
