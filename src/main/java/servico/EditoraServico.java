@@ -64,7 +64,17 @@ public class EditoraServico {
 		}
 	}
 	
-	public Editora buscar(int cod) {
+	/**
+	 * 
+	 * Select a Editora object
+	 * 
+	 * @param cod int to find
+	 * 
+	 * @return Editora object
+	 * 
+	 */
+	public Editora buscar(int cod) 
+	{
 		return dao.buscar(cod);
 	}
 	
