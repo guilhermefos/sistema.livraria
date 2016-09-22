@@ -65,7 +65,15 @@ public class ClienteServico {
 		}
 	}
 	
-	public Cliente buscar(int cod) {
+	/**
+	 * 
+	 * Select a Cliente object
+	 * 
+	 * @param cod int to find
+	 * 
+	 */
+	public Cliente buscar(int cod) 
+	{
 		return dao.buscar(cod);
 	}
 	
