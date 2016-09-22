@@ -79,7 +79,15 @@ public class CategoriaServico {
 		return dao.buscar(cod);
 	}
 	
-	public List<Categoria> buscarTodos() {
+	/**
+	 * 
+	 * Select all Categoria objects
+	 * 
+	 * @return List of Categoria objects
+	 * 
+	 */
+	public List<Categoria> buscarTodos() 
+	{
 		return dao.buscarTodos();
 	}
 
