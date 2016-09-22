@@ -65,7 +65,17 @@ public class CategoriaServico {
 		
 	}
 	
-	public Categoria buscar(int cod) {
+	/**
+	 * 
+	 * Select a Categoria object
+	 * 
+	 * @param x Categoria object to find
+	 * 
+	 * @return Categoria object
+	 * 
+	 */
+	public Categoria buscar(int cod) 
+	{
 		return dao.buscar(cod);
 	}
 	
