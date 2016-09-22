@@ -40,10 +40,28 @@ public class ItemEmprestimoServico {
 		}
 	}
 	
-	public void excluir(ItemEmprestimo x) {
-		EM.getLocalEm().getTransaction().begin();
-		dao.excluir(x);
-		EM.getLocalEm().getTransaction().commit();
+	/**
+	 * 
+	 * Delete ItemEmprestimo object
+	 * 
+	 * @param x ItemEmprestimo object from delete
+	 * 
+	 * @return void
+	 * 
+	 */
+	public void excluir(ItemEmprestimo x) 
+	{
+		try
+		{
+			Transaction.begin();
+			dao.excluir(x);
+			Transaction.commit();
+		}
+		catch(RuntimeException e)
+		{
+			Transaction.rollback();
+			System.out.println("Erro: " + e.getMessage());
+		}
 	}
 	
 	public ItemEmprestimo buscar(int cod) {
