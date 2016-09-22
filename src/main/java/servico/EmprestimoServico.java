@@ -64,7 +64,17 @@ public class EmprestimoServico {
 		}
 	}
 	
-	public Emprestimo buscar(int cod) {
+	/**
+	 * 
+	 * Select a Emprestimo object
+	 * 
+	 * @param cod int to find
+	 * 
+	 * @return Emprestimo object
+	 * 
+	 */
+	public Emprestimo buscar(int cod) 
+	{
 		return dao.buscar(cod);
 	}
 	
