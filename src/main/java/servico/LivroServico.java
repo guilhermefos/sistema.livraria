@@ -64,7 +64,17 @@ public class LivroServico {
 		}
 	}
 	
-	public Livro buscar(int cod) {
+	/**
+	 * 
+	 * Select a Livro object
+	 * 
+	 * @param cod int to find
+	 * 
+	 * @return Livro object
+	 * 
+	 */
+	public Livro buscar(int cod) 
+	{
 		return dao.buscar(cod);
 	}
 	
