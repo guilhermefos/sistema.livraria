@@ -78,7 +78,15 @@ public class EditoraServico {
 		return dao.buscar(cod);
 	}
 	
-	public List<Editora> buscarTodos() {
+	/**
+	 * 
+	 * Select all Editora objects
+	 * 
+	 * @return List of Editora objects
+	 * 
+	 */
+	public List<Editora> buscarTodos() 
+	{
 		return dao.buscarTodos();
 	}
 
