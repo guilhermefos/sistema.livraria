@@ -4,6 +4,7 @@ import java.util.List;
 
 import dao.DaoFactory;
 import dao.LivroDao;
+import dao.Transaction;
 import dao.impl.EM;
 import dominio.Livro;
 
@@ -15,10 +16,28 @@ public class LivroServico {
 		dao = DaoFactory.criarLivroDao();
 	}
 	
-	public void inserirAtualizar(Livro x) {
-		EM.getLocalEm().getTransaction().begin();
-		dao.inserirAtualizar(x);
-		EM.getLocalEm().getTransaction().commit();
+	/**
+	 * 
+	 * Insert or Update Livro object
+	 * 
+	 * @param x Livro object from update
+	 * 
+	 * @return void
+	 * 
+	 */
+	public void inserirAtualizar(Livro x) 
+	{
+		try
+		{
+			Transaction.begin();
+			dao.inserirAtualizar(x);
+			Transaction.commit();
+		}
+		catch(RuntimeException e)
+		{
+			Transaction.rollback();
+			System.out.println("Erro: " + e.getMessage());
+		}
 	}
 	
 	public void excluir(Livro x) {
