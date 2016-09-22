@@ -4,6 +4,7 @@ import java.util.List;
 
 import dao.DaoFactory;
 import dao.ItemEmprestimoDao;
+import dao.Transaction;
 import dao.impl.EM;
 import dominio.ItemEmprestimo;
 
@@ -15,10 +16,28 @@ public class ItemEmprestimoServico {
 		dao = DaoFactory.criarItemEmprestimoDao();
 	}
 	
-	public void inserirAtualizar(ItemEmprestimo x) {
-		EM.getLocalEm().getTransaction().begin();
-		dao.inserirAtualizar(x);
-		EM.getLocalEm().getTransaction().commit();
+	/**
+	 * 
+	 * Insert or Update ItemEmprestimo object
+	 * 
+	 * @param x ItemEmprestimo object from update
+	 * 
+	 * @return void
+	 * 
+	 */
+	public void inserirAtualizar(ItemEmprestimo x) 
+	{
+		try
+		{
+			Transaction.begin();
+			dao.inserirAtualizar(x);
+			Transaction.commit();
+		}
+		catch(RuntimeException e)
+		{
+			Transaction.rollback();
+			System.out.println("Erro: " + e.getMessage());
+		}
 	}
 	
 	public void excluir(ItemEmprestimo x) {
