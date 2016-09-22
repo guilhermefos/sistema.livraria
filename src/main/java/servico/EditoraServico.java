@@ -3,6 +3,7 @@ package servico;
 import java.util.List;
 
 import dao.EditoraDao;
+import dao.Transaction;
 import dao.DaoFactory;
 import dao.impl.EM;
 import dominio.Editora;
@@ -15,11 +16,30 @@ public class EditoraServico {
 		dao = DaoFactory.criarEditoraDao();
 	}
 	
-	public void inserirAtualizar(Editora x) {
-		EM.getLocalEm().getTransaction().begin();
-		dao.inserirAtualizar(x);
-		EM.getLocalEm().getTransaction().commit();
+	/**
+	 * 
+	 * Insert or Update Editora object
+	 * 
+	 * @param x Editora object from update
+	 * 
+	 * @return void
+	 * 
+	 */
+	public void inserirAtualizar(Editora x) 
+	{
+		try
+		{
+			Transaction.begin();
+			dao.inserirAtualizar(x);
+			Transaction.commit();
+		}
+		catch(RuntimeException e)
+		{
+			Transaction.rollback();
+			System.out.println("Erro: " + e.getMessage());
+		}
 	}
+	
 	
 	public void excluir(Editora x) {
 		EM.getLocalEm().getTransaction().begin();
