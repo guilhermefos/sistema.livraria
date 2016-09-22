@@ -78,7 +78,15 @@ public class ItemEmprestimoServico {
 		return dao.buscar(cod);
 	}
 	
-	public List<ItemEmprestimo> buscarTodos() {
+	/**
+	 * 
+	 * Select all ItemEmprestimo objects
+	 * 
+	 * @return List of ItemEmprestimo objects
+	 * 
+	 */
+	public List<ItemEmprestimo> buscarTodos() 
+	{
 		return dao.buscarTodos();
 	}
 
