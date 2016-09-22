@@ -4,6 +4,7 @@ import java.util.List;
 
 import dao.ClienteDao;
 import dao.DaoFactory;
+import dao.Transaction;
 import dao.impl.EM;
 import dominio.Cliente;
 
@@ -15,10 +16,29 @@ public class ClienteServico {
 		dao = DaoFactory.criarClienteDao();
 	}
 	
-	public void inserirAtualizar(Cliente x) {
-		EM.getLocalEm().getTransaction().begin();
-		dao.inserirAtualizar(x);
-		EM.getLocalEm().getTransaction().commit();
+	
+	/**
+	 * 
+	 * Insert or Update Client object
+	 * 
+	 * @param x Client object from update
+	 * 
+	 * @return void
+	 * 
+	 */
+	public void inserirAtualizar(Cliente x) 
+	{
+		try
+		{
+			Transaction.begin();
+			dao.inserirAtualizar(x);
+			Transaction.commit();
+		}
+		catch(RuntimeException e)
+		{
+			Transaction.rollback();
+			System.out.println("Erro: " + e.getMessage());
+		}
 	}
 	
 	public void excluir(Cliente x) {
