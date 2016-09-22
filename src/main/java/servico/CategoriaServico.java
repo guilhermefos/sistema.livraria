@@ -40,10 +40,28 @@ public class CategoriaServico {
 		}
 	}
 	
-	public void excluir(Categoria x) {
-		EM.getLocalEm().getTransaction().begin();
-		dao.excluir(x);
-		EM.getLocalEm().getTransaction().commit();
+	/**
+	 * 
+	 * Delete Categoria object
+	 * 
+	 * @param x Categoria object from delete
+	 * 
+	 * @return void
+	 * 
+	 */
+	public void excluir(Categoria x) 
+	{
+		try
+		{
+			Transaction.begin();
+			dao.excluir(x);
+			Transaction.commit();
+		}
+		catch(RuntimeException e)
+		{
+			Transaction.rollback();
+			System.out.println("Erro: " + e.getMessage());
+		}
 		
 	}
 	
