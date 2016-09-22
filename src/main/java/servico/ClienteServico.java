@@ -77,7 +77,15 @@ public class ClienteServico {
 		return dao.buscar(cod);
 	}
 	
-	public List<Cliente> buscarTodos() {
+	/**
+	 * 
+	 * Select all Cliente objects
+	 * 
+	 * @return List of Cliente objects
+	 * 
+	 */
+	public List<Cliente> buscarTodos() 
+	{
 		return dao.buscarTodos();
 	}
 
