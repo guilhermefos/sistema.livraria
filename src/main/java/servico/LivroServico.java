@@ -40,10 +40,28 @@ public class LivroServico {
 		}
 	}
 	
-	public void excluir(Livro x) {
-		EM.getLocalEm().getTransaction().begin();
-		dao.excluir(x);
-		EM.getLocalEm().getTransaction().commit();
+	/**
+	 * 
+	 * Delete Livro object
+	 * 
+	 * @param x Livro object from delete
+	 * 
+	 * @return void
+	 * 
+	 */
+	public void excluir(Livro x) 
+	{
+		try
+		{
+			Transaction.begin();
+			dao.excluir(x);
+			Transaction.commit();
+		}
+		catch(RuntimeException e)
+		{
+			Transaction.rollback();
+			System.out.println("Erro: " + e.getMessage());
+		}
 	}
 	
 	public Livro buscar(int cod) {
