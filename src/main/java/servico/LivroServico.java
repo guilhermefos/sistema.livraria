@@ -1,11 +1,10 @@
 package servico;
 
+import java.math.BigDecimal;
 import java.util.List;
-
 import dao.DaoFactory;
 import dao.LivroDao;
 import dao.Transaction;
-import dao.impl.EM;
 import dominio.Livro;
 
 public class LivroServico {
@@ -18,24 +17,56 @@ public class LivroServico {
 	
 	/**
 	 * 
-	 * Insert or Update Livro object
+	 * Insert Livro object
 	 * 
 	 * @param x Livro object from update
 	 * 
 	 * @return void
 	 * 
 	 */
-	public void inserirAtualizar(Livro x) 
-	{
-		try
-		{
+	public void inserir(Livro x) throws ServicoException {
+		try {
+			Livro aux = dao.buscaLivroPorIsbn(x.getIsbn());
+			if (aux != null) {
+				throw new ServicoException("Já existe um livro com esse ISBN! Inserção cancelada.", 1);
+			}
+			
 			Transaction.begin();
 			dao.inserirAtualizar(x);
 			Transaction.commit();
 		}
-		catch(RuntimeException e)
-		{
-			Transaction.rollback();
+		catch (RuntimeException e) {
+			if (Transaction.isActive()) {
+				Transaction.rollback();
+			}
+			System.out.println("Erro: " + e.getMessage());
+		}
+	}
+	
+	/**
+	 * 
+	 * Update Livro object
+	 * 
+	 * @param x Livro object from update
+	 * 
+	 * @return void
+	 * 
+	 */
+	public void atualizar(Livro x) throws ServicoException {
+		try {
+			Livro aux = dao.buscaLivroPorIsbn(x.getIsbn());
+			if (aux != null && aux.getCodLivro() != x.getCodLivro()) {
+				throw new ServicoException("Já existe um livro com esse ISBN! Atualização cancelada.", 1);
+			}
+			
+			Transaction.begin();
+			dao.inserirAtualizar(x);
+			Transaction.commit();
+		}
+		catch (RuntimeException e) {
+			if (Transaction.isActive()) {
+				Transaction.rollback();
+			}
 			System.out.println("Erro: " + e.getMessage());
 		}
 	}
@@ -88,6 +119,18 @@ public class LivroServico {
 	public List<Livro> buscarTodos() 
 	{
 		return dao.buscarTodos();
+	}
+	
+	/**
+	 * 
+	 * Select all Livro per title and dairy value objects
+	 * 
+	 * @return List of Livro objects
+	 * 
+	 */
+	public List<Livro> buscarPorTituloValorMinimoValorMaximo(String trecho, BigDecimal vlrMin, BigDecimal vlrMax) 
+	{
+		return dao.buscarPorTituloValorMinimoValorMaximo(trecho, vlrMin, vlrMax);
 	}
 
 }

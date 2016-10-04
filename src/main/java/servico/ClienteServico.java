@@ -1,11 +1,9 @@
 package servico;
 
 import java.util.List;
-
 import dao.ClienteDao;
 import dao.DaoFactory;
 import dao.Transaction;
-import dao.impl.EM;
 import dominio.Cliente;
 
 public class ClienteServico {
@@ -19,24 +17,56 @@ public class ClienteServico {
 	
 	/**
 	 * 
-	 * Insert or Update Client object
+	 * Insert Client object
 	 * 
 	 * @param x Cliente object from update
 	 * 
 	 * @return void
 	 * 
 	 */
-	public void inserirAtualizar(Cliente x) 
-	{
-		try
-		{
+	public void inserir(Cliente x) throws ServicoException {
+		try {
+			Cliente aux = dao.buscaClientePorCpf(x.getCpf());
+			if (aux != null) {
+				throw new ServicoException("Já existe um cliente com esse CPF! Inserção cancelada.", 1);
+			}
+			
 			Transaction.begin();
 			dao.inserirAtualizar(x);
 			Transaction.commit();
 		}
-		catch(RuntimeException e)
-		{
-			Transaction.rollback();
+		catch (RuntimeException e) {
+			if (Transaction.isActive()) {
+				Transaction.rollback();
+			}
+			System.out.println("Erro: " + e.getMessage());
+		}
+	}
+
+	/**
+	 * 
+	 * Update Cliente object
+	 * 
+	 * @param x Cliente object from update
+	 * 
+	 * @return void
+	 * 
+	 */
+	public void atualizar(Cliente x) throws ServicoException {
+		try {
+			Cliente aux = dao.buscaClientePorCpf(x.getCpf());
+			if (aux != null && aux.getCodCliente() != x.getCodCliente()) {
+				throw new ServicoException("Já existe um cliente com esse CPF! Atualização cancelada.", 1);
+			}
+			
+			Transaction.begin();
+			dao.inserirAtualizar(x);
+			Transaction.commit();
+		}
+		catch (RuntimeException e) {
+			if (Transaction.isActive()) {
+				Transaction.rollback();
+			}
 			System.out.println("Erro: " + e.getMessage());
 		}
 	}
@@ -50,17 +80,21 @@ public class ClienteServico {
 	 * @return void
 	 * 
 	 */
-	public void excluir(Cliente x)
-	{
-		try
-		{
+	public void excluir(Cliente x) throws ServicoException {
+		try {
+			x = dao.buscar(x.getCodCliente());
+			if (!x.getEmprestimos().isEmpty()) {
+				throw new ServicoException("Exclusão não permitida! Cliente possui emprestimos!", 2);
+			}
+			
 			Transaction.begin();
 			dao.excluir(x);
 			Transaction.commit();
 		}
-		catch(RuntimeException e)
-		{
-			Transaction.rollback();
+		catch (RuntimeException e) {
+			if (Transaction.isActive()) {
+				Transaction.rollback();
+			}
 			System.out.println("Erro: " + e.getMessage());
 		}
 	}

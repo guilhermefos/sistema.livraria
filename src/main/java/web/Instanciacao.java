@@ -23,6 +23,7 @@ import servico.EditoraServico;
 import servico.EmprestimoServico;
 import servico.ItemEmprestimoServico;
 import servico.LivroServico;
+import servico.ServicoException;
 
 
 /**
@@ -82,34 +83,38 @@ public class Instanciacao extends HttpServlet {
 			ItemEmprestimo im9 = new ItemEmprestimo(null, 10, l10, em5);
 			ItemEmprestimo im10 = new ItemEmprestimo(null, 10, l9, em5);
 			
-			
+			// Insere cliente
 			ClienteServico cs = new ClienteServico();
-			cs.inserirAtualizar(c1);
-			cs.inserirAtualizar(c2);
-			cs.inserirAtualizar(c3);
+			cs.inserir(c1);
+			cs.inserir(c2);
+			cs.inserir(c3);
 			
+			// Insere editora
 			EditoraServico es = new EditoraServico();
 			es.inserirAtualizar(e1);
 			es.inserirAtualizar(e2);
 			es.inserirAtualizar(e3);
 			
+			// Insere categoria
 			CategoriaServico cts = new CategoriaServico();
 			cts.inserirAtualizar(ct1);
 			cts.inserirAtualizar(ct2);
 			cts.inserirAtualizar(ct3);
 			
+			// Insere livro
 			LivroServico ls = new LivroServico();
-			ls.inserirAtualizar(l1);
-			ls.inserirAtualizar(l2);
-			ls.inserirAtualizar(l3);
-			ls.inserirAtualizar(l4);
-			ls.inserirAtualizar(l5);
-			ls.inserirAtualizar(l6);
-			ls.inserirAtualizar(l7);
-			ls.inserirAtualizar(l8);
-			ls.inserirAtualizar(l9);
-			ls.inserirAtualizar(l10);
+			ls.inserir(l1);
+			ls.inserir(l2);
+			ls.inserir(l3);
+			ls.inserir(l4);
+			ls.inserir(l5);
+			ls.inserir(l6);
+			ls.inserir(l7);
+			ls.inserir(l8);
+			ls.inserir(l9);
+			ls.inserir(l10);
 			
+			// Insere emprestimo
 			EmprestimoServico eps = new EmprestimoServico();
 			eps.inserirAtualizar(em1);
 			eps.inserirAtualizar(em2);
@@ -117,6 +122,7 @@ public class Instanciacao extends HttpServlet {
 			eps.inserirAtualizar(em4);
 			eps.inserirAtualizar(em5);
 			
+			// Insere item do emprestimo
 			ItemEmprestimoServico ies = new ItemEmprestimoServico();
 			ies.inserirAtualizar(im1);
 			ies.inserirAtualizar(im2);
@@ -128,15 +134,15 @@ public class Instanciacao extends HttpServlet {
 			ies.inserirAtualizar(im8);
 			ies.inserirAtualizar(im9);
 			ies.inserirAtualizar(im10);
-			
-			
+
 			response.getWriter().append("<br>Fim");
-		
 		}
 		catch (ParseException e) {
 			System.out.println("Erro: " + e.getMessage());
 		}
-		
+		catch (ServicoException e) {
+			response.getWriter().append("Erro! " + e.getMessage());
+		}
 	}
 
 }

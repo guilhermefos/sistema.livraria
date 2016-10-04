@@ -1,10 +1,9 @@
 package dao.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-
 import dao.LivroDao;
 import dominio.Livro;
 
@@ -40,6 +39,46 @@ public class LivroDaoImpl implements LivroDao{
 	public List<Livro> buscarTodos() {
 		String jpql = "SELECT x FROM Livro x";
 		Query query = em.createQuery(jpql);
+		return query.getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public Livro buscaTituloExato(String titulo) {
+		String jpql = "SELECT x FROM Livro x WHERE x.titulo = :p1";
+		Query query = em.createQuery(jpql);
+		query.setParameter("p1", titulo);
+		List<Livro> aux = query.getResultList();
+		return (aux.size() > 0) ? aux.get(0) : null;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public Livro buscaLivroPorIsbn(String isbn) {
+		String jpql = "SELECT x FROM Livro x WHERE x.isbn = :p1";
+		Query query = em.createQuery(jpql);
+		query.setParameter("p1", isbn);
+		List<Livro> aux = query.getResultList();
+		return (aux.size() > 0) ? aux.get(0) : null;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Livro> buscarPorTitulo(String trecho) {
+		String jpql = "SELECT x FROM Livro x WHERE x.titulo LIKE :p1";
+		Query query = em.createQuery(jpql);
+		query.setParameter("p1", "%"+trecho+"%");
+		return query.getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Livro> buscarPorTituloValorMinimoValorMaximo(String trecho, BigDecimal vlrMin, BigDecimal vlrMax) {
+		String jpql = "SELECT x FROM Livro x WHERE x.titulo LIKE :p1 and x.valorDiario BETEWEEN :p2 AND :p3";
+		Query query = em.createQuery(jpql);
+		query.setParameter("p1", "%"+trecho+"%");
+		query.setParameter("p2", vlrMin);
+		query.setParameter("p3", vlrMax);
 		return query.getResultList();
 	}
 
