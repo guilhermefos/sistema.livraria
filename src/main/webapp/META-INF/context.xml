@@ -7,7 +7,7 @@
 	maxIdle="30"
 	maxWait="10000"
 	username="root"
-	password="root"
+	password=""
 	driverClassName="com.mysql.jdbc.Driver"
 	url="jdbc:mysql://localhost:3306/livraria?autoReconnect=true"/>
 </Context>

@@ -2,10 +2,9 @@ package servico;
 
 import java.util.List;
 
+import dao.DaoFactory;
 import dao.EditoraDao;
 import dao.Transaction;
-import dao.DaoFactory;
-import dao.impl.EM;
 import dominio.Editora;
 
 public class EditoraServico {
@@ -16,78 +15,74 @@ public class EditoraServico {
 		dao = DaoFactory.criarEditoraDao();
 	}
 	
-	/**
-	 * 
-	 * Insert or Update Editora object
-	 * 
-	 * @param x Editora object from update
-	 * 
-	 * @return void
-	 * 
-	 */
-	public void inserirAtualizar(Editora x) 
-	{
-		try
-		{
+	public void inserir(Editora x) throws ServicoException {
+		try {
+			//EXCEÇÃO: 3.1.1 - NOME JÁ CADASTRADO.
+			Editora aux = dao.buscarNomeExato(x.getNome());
+			if( aux != null) {
+				throw new ServicoException("Já existe uma Editora com esse NOME", 1);
+			}
+			
+			
 			Transaction.begin();
 			dao.inserirAtualizar(x);
 			Transaction.commit();
+			
+		} catch (RuntimeException e) {
+			if(Transaction.isActive()) {
+				Transaction.rollback();	//desfaz caso tenha erro.
+			}
+			System.out.println("Erro: " + e.getMessage());
 		}
-		catch(RuntimeException e)
-		{
-			Transaction.rollback();
+	}
+
+	public void Atualizar(Editora x) throws ServicoException {
+		try {
+			//EXCEÇÂO 3.3.2 - NOME JÁ CADASTRADO.
+			Editora aux = dao.buscarNomeExatoDiferente(x.getCodEditora(), x.getNome());
+			if( aux != null) {
+				throw new ServicoException("Já existe uma Editora diferente com esse nome", 2);
+			}
+			
+			Transaction.begin();
+			dao.inserirAtualizar(x);
+			Transaction.commit();
+			
+		} catch (RuntimeException e) {
+			if(Transaction.isActive()) {
+				Transaction.rollback();	//desfaz caso tenha erro.
+			}
 			System.out.println("Erro: " + e.getMessage());
 		}
 	}
 	
-	/**
-	 * 
-	 * Delete Editora object
-	 * 
-	 * @param x Editora object from delete
-	 * 
-	 * @return void
-	 * 
-	 */
-	public void excluir(Editora x) 
-	{
-		try
-		{
+	public void excluir(Editora x) {
+		try {
 			Transaction.begin();
 			dao.excluir(x);
 			Transaction.commit();
-		}
-		catch(RuntimeException e)
-		{
-			Transaction.rollback();
+			
+		} catch (RuntimeException e) {
+			if(Transaction.isActive()) {
+				Transaction.rollback();	//desfaz caso tenha erro.
+			}
 			System.out.println("Erro: " + e.getMessage());
 		}
 	}
 	
-	/**
-	 * 
-	 * Select a Editora object
-	 * 
-	 * @param cod int to find
-	 * 
-	 * @return Editora object
-	 * 
-	 */
-	public Editora buscar(int cod) 
-	{
+	public Editora buscar(int cod) {
 		return dao.buscar(cod);
 	}
 	
-	/**
-	 * 
-	 * Select all Editora objects
-	 * 
-	 * @return List of Editora objects
-	 * 
-	 */
-	public List<Editora> buscarTodos() 
-	{
+	public List<Editora> buscarTodos() {
 		return dao.buscarTodos();
 	}
 
+	public List<Editora> buscaPorNome(String nome) {
+		return dao.buscaPorNome(nome);
+	}
+	
+	public List<Editora> buscarTodosOrdenadosPorNome() {
+		return dao.buscarTodosOrdenadosPorNome();
+	}
 }

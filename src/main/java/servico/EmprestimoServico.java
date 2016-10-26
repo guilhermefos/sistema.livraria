@@ -5,7 +5,6 @@ import java.util.List;
 import dao.DaoFactory;
 import dao.EmprestimoDao;
 import dao.Transaction;
-import dao.impl.EM;
 import dominio.Emprestimo;
 
 public class EmprestimoServico {

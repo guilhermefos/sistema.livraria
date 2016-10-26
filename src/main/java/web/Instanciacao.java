@@ -37,7 +37,7 @@ public class Instanciacao extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append("Served at: Entrou no método get ").append(request.getContextPath());
 		
 		try {
 			
@@ -91,15 +91,15 @@ public class Instanciacao extends HttpServlet {
 			
 			// Insere editora
 			EditoraServico es = new EditoraServico();
-			es.inserirAtualizar(e1);
-			es.inserirAtualizar(e2);
-			es.inserirAtualizar(e3);
+			es.inserir(e1);
+			es.inserir(e2);
+			es.inserir(e3);
 			
 			// Insere categoria
 			CategoriaServico cts = new CategoriaServico();
-			cts.inserirAtualizar(ct1);
-			cts.inserirAtualizar(ct2);
-			cts.inserirAtualizar(ct3);
+			cts.inserir(ct1);
+			cts.inserir(ct2);
+			cts.inserir(ct3);
 			
 			// Insere livro
 			LivroServico ls = new LivroServico();
@@ -135,7 +135,7 @@ public class Instanciacao extends HttpServlet {
 			ies.inserirAtualizar(im9);
 			ies.inserirAtualizar(im10);
 
-			response.getWriter().append("<br>Fim");
+			response.getWriter().append("Instanciado com sucesso.");
 		}
 		catch (ParseException e) {
 			System.out.println("Erro: " + e.getMessage());

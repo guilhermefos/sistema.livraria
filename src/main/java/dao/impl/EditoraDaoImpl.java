@@ -42,5 +42,51 @@ public class EditoraDaoImpl implements EditoraDao {
 		Query query = em.createQuery(jpql);
 		return query.getResultList();
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Editora> buscaPorNome(String nome) {
+		String jpql = "SELECT x FROM Editora x WHERE x.nome LIKE :p1";
+		Query query = em.createQuery(jpql);
+		query.setParameter("p1", "%"+nome+"%");
+		return query.getResultList();
+	}
+	
+	//Exceção 3.1.1 - incluir
+	@SuppressWarnings("unchecked")
+	@Override
+	public Editora buscarNomeExato(String nome) {
+		String jpql = "SELECT x FROM Editora x WHERE x.nome = :p1"; //p1 é o parametro 1.
+		Query query = em.createQuery(jpql);
+		query.setParameter("p1", nome);
+		List<Editora> aux = query.getResultList();
+		if(aux.size() > 0) {
+			return aux.get(0);	//retorna primeiro elemento da lista.
+		}else {
+			return null;
+		}
+	}
 
+	//Exceção 3.3.2 - Atualizar
+	@SuppressWarnings("unchecked")
+	@Override
+	public Editora buscarNomeExatoDiferente(Integer codEditora, String nome) {
+		String jpql = "SELECT x FROM Editora x WHERE x.codEditora <> :p0 AND x.nome = :p1";	//p1 e p0 são parametro.
+		Query query = em.createQuery(jpql);
+		query.setParameter("p0", codEditora);
+		query.setParameter("p1", nome);
+		List<Editora> aux = query.getResultList();
+		if (aux.size() > 0)
+			return aux.get(0);	//retorna primeiro elemento da lista.
+		else
+			return null;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Editora> buscarTodosOrdenadosPorNome() {
+		String jpql = "SELECT x FROM Editora x ORDER BY x.nome";
+		Query query = em.createQuery(jpql);
+		return query.getResultList();
+	}
 }
