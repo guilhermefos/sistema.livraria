@@ -23,7 +23,7 @@ public class EditoraInserir extends HttpServlet {
 	private static String DESTINO = "/editora/listarEditora.jsp";
 	private static String ERRO = "/publico/erro.jsp";
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		EditoraServico es = new EditoraServico();
 		Editora x = Instanciar.editora(request);

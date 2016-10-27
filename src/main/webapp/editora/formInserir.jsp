@@ -20,7 +20,7 @@
         <h1>Inserir nova Editora</h1>
       </div>
       
-      <form name="myform" class="form-horizontal" 
+      <form method="post" name="myform" class="form-horizontal" 
       		action="<%=request.getContextPath()%>/editora/inserir">
       		
       		<div class="form-group">
