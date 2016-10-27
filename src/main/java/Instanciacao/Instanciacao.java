@@ -1,4 +1,4 @@
-package web;
+package Instanciacao;
 
 import java.io.IOException;
 import java.math.BigDecimal;

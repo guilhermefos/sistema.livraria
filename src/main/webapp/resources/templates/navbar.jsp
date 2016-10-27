@@ -14,12 +14,12 @@
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="<%=request.getContextPath()%>/editora/listar">Cadastro
-						de Artistas</a></li>
-				<li><a href="<%=request.getContextPath()%>/filme/pesquisar">Pesquisar
-						Filmes</a></li>
+				<li><a href="<%=request.getContextPath()%>/editora/listarEditora">Pesquisa
+						de Editora</a></li>
+				<li><a href="<%=request.getContextPath()%>/filme/pesquisar">XXX
+						Editora</a></li>
 				<li><a href="<%=request.getContextPath()%>/participacao/filmes">Inserir
-						Participação</a></li>
+						Editora</a></li>
 			</ul>
 		</div>
 		<!--/.nav-collapse -->

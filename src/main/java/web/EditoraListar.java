@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import dominio.Editora;
 import servico.EditoraServico;
 
-@WebServlet("/editora/listar")
+@WebServlet("/editora/listarEditora")
 public class EditoraListar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private static String DESTINO = "/editora/listar.jsp";
+	private static String DESTINO = "/editora/listarEditora.jsp";
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
