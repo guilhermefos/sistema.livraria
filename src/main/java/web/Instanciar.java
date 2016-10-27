@@ -12,10 +12,15 @@ public class Instanciar {
 		
 		s = request.getParameter("codEditora");
 		if (s!=null && !s.isEmpty()) {
-			aux.setCodEditora(Integer.parseInt(s));
+			try {		//excessão de campo inválido no front end.
+				aux.setCodEditora(Integer.parseInt(s));
+
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			}
 		}
 		
-		s = request.getParameter("nome");
+		s = request.getParameter("nome");	//Verificar como validar nome, digitando um número por ex.
 		if (s!=null && !s.isEmpty()) {
 			aux.setNome(s);
 		}

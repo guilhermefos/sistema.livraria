@@ -1,5 +1,6 @@
 package servico;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dao.DaoFactory;
@@ -13,6 +14,18 @@ public class EditoraServico {
 	
 	public EditoraServico() {
 		dao = DaoFactory.criarEditoraDao();
+	}
+	
+	public void validar(Editora x) throws ValidacaoException {
+		List<String> erros = new ArrayList<>();
+		
+		if (x.getNome() == null || x.getNome().isEmpty()) {	//incluir x.getNome().isEmpty()
+			erros.add("Favor preencher o campo nome");
+		}
+		
+		if (!erros.isEmpty()) {
+			throw new ValidacaoException("Erro de validação", erros);
+		}
 	}
 	
 	public void inserir(Editora x) throws ServicoException {

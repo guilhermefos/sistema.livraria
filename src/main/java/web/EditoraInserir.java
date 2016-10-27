@@ -15,12 +15,14 @@ import javax.servlet.http.HttpServletResponse;
 import dominio.Editora;
 import servico.EditoraServico;
 import servico.ServicoException;
+import servico.ValidacaoException;
 
 @WebServlet("/editora/inserir")
 public class EditoraInserir extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private static String DESTINO = "/editora/listarEditora.jsp";
+	private static String FORM = "/editora/formaInserir.jsp";
 	private static String ERRO = "/publico/erro.jsp";
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,13 +31,18 @@ public class EditoraInserir extends HttpServlet {
 		Editora x = Instanciar.editora(request);
 
 		try {
+			es.validar(x);
 			es.inserir(x);
 			List<Editora> itens = es.buscarTodosOrdenadosPorNome();
 			request.setAttribute("itens", itens);
 			request.getRequestDispatcher(DESTINO).forward(request, response);
-		} catch (ServicoException e) {
+		} catch (ServicoException e) {	//validação regra de negócio
 			request.setAttribute("msg", e.getMessage());
 			request.getRequestDispatcher(ERRO).forward(request, response);
+		} catch (ValidacaoException e) { //validação de dados.
+			request.setAttribute("erros", e.getErros());
+			request.setAttribute("item", x);
+			request.getRequestDispatcher(FORM).forward(request, response);
 		}
 		
 		
