@@ -69,7 +69,7 @@ public class EditoraServico {
 		}
 	}
 	
-	public void excluir(Editora x) {
+	public void excluir(Editora x) throws ServicoException{
 		try {
 			Transaction.begin();
 			dao.excluir(x);

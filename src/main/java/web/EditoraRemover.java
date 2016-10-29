@@ -1,7 +1,6 @@
 package web;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,17 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 import dominio.Editora;
 import servico.EditoraServico;
 
-@WebServlet("/editora/listarEditora")	//entra primeiro aqui na chamada no front end.
-public class EditoraListar extends HttpServlet {
+@WebServlet("/editora/remover")
+public class EditoraRemover extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private static String DESTINO = "/editora/listarEditora.jsp";
+	private static String DESTINO = "/editora/confirmarExclusao.jsp";
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		EditoraServico es = new EditoraServico();
-		List<Editora> itens = es.buscarTodosOrdenadosPorNome();
-		request.setAttribute("itens", itens);
+		int cod = Integer.parseInt(request.getParameter("cod"));
+		Editora ed = es.buscar(cod);
+		request.setAttribute("item", ed);
 		request.getRequestDispatcher(DESTINO).forward(request, response);
 		
 	}

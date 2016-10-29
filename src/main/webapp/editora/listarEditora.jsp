@@ -22,7 +22,7 @@
 	<!-- Begin page content -->
 	<div class="container">
 		<div class="page-header">
-			<h1>Artistas</h1>
+			<h1>Editoras</h1>
 		</div>
 
 		<div class="row">

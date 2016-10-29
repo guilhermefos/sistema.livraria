@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import dominio.Editora;
 import servico.EditoraServico;
 
-@WebServlet("/artista/filtrar")
+@WebServlet("/editora/filtrar")
 public class EditoraFiltrar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

@@ -17,12 +17,12 @@ import servico.EditoraServico;
 import servico.ServicoException;
 import servico.ValidacaoException;
 
-@WebServlet("/editora/inserir")
-public class EditoraInserir extends HttpServlet {
+@WebServlet("/editora/atualizar")
+public class EditoraAtualizar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private static String DESTINO = "/editora/listarEditora.jsp";
-	private static String FORM = "/editora/formInserir.jsp";
+	private static String FORM = "/editora/formEditar.jsp";
 	private static String ERRO = "/publico/erro.jsp";
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,7 +32,7 @@ public class EditoraInserir extends HttpServlet {
 
 		try {
 			es.validar(x);
-			es.inserir(x);
+			es.Atualizar(x);
 			List<Editora> itens = es.buscarTodosOrdenadosPorNome();
 			request.setAttribute("itens", itens);
 			request.getRequestDispatcher(DESTINO).forward(request, response);
