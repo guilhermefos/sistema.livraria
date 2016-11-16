@@ -32,7 +32,7 @@
 				<li class="list-group-item">Número de páginas: ${item.paginas}</li>
 				<li class="list-group-item">Valor diário: <fmt:setLocale value="pt_BR" /> <fmt:formatNumber
 						type="currency" value="${item.valorDiario}" /></li>
-				<li class="list-group-item">ISBN: ${item.isbn} /></li>
+				<li class="list-group-item">ISBN: ${item.isbn} </li>
 				<li class="list-group-item">Categoria: ${item.categoria.nome}</li>
 				<li class="list-group-item">Editora: ${item.editora.nome}</li>
 			</ul>

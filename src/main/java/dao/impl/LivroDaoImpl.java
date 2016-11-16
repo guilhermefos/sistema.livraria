@@ -76,7 +76,7 @@ public class LivroDaoImpl implements LivroDao{
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Livro> buscarPorTituloValorMinimoValorMaximo(String trecho, BigDecimal vlrMin, BigDecimal vlrMax) {
-		String jpql = "SELECT x FROM Livro x WHERE x.titulo LIKE :p1 and x.valorDiario BETWEEN :p2 AND :p3";	//acrescentar ORDER BY x.titulo
+		String jpql = "SELECT x FROM Livro x WHERE x.titulo LIKE :p1 and x.valorDiario BETWEEN :p2 AND :p3 ORDER BY x.titulo";	//acrescentar ORDER BY x.titulo
 		Query query = em.createQuery(jpql);
 		query.setParameter("p1", "%"+trecho+"%");
 		query.setParameter("p2", vlrMin);
