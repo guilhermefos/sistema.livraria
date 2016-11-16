@@ -1,5 +1,6 @@
 package servico;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dao.CategoriaDao;
@@ -13,6 +14,18 @@ public class CategoriaServico {
 	
 	public CategoriaServico() {
 		dao = DaoFactory.criarCategoriaDao();
+	}
+	
+	public void validar(Categoria x) throws ValidacaoException {
+		List<String> erros = new ArrayList<>();
+		
+		if (x.getNome() == null ) {	// Se for null o objeto foi criado nulo. trata retorno da classe instanciar.
+			erros.add("Favor preencher o campo nome");
+		}
+		
+		if (!erros.isEmpty()) {
+			throw new ValidacaoException("Erro de validação", erros);
+		}
 	}
 	
 	public void inserir(Categoria x) throws ServicoException {
@@ -58,7 +71,7 @@ public class CategoriaServico {
 		}
 	}
 	
-	public void excluir(Categoria x) {
+	public void excluir(Categoria x) throws ServicoException {
 		
 		try {
 			Transaction.begin();

@@ -16,10 +16,10 @@
 			<ul class="nav navbar-nav">
 				<li><a href="<%=request.getContextPath()%>/editora/listarEditora">Pesquisa
 						de Editora</a></li>
-				<li><a href="<%=request.getContextPath()%>/filme/pesquisar">XXX
-						Editora</a></li>
-				<li><a href="<%=request.getContextPath()%>/participacao/filmes">Inserir
-						Editora</a></li>
+				<li><a href="<%=request.getContextPath()%>/categoria/listarCategoria">Pesquisa
+						de Categoria</a></li>
+				<li><a href="<%=request.getContextPath()%>/livro/pesquisar">Pesquisa
+						de Livros</a></li>
 			</ul>
 		</div>
 		<!--/.nav-collapse -->

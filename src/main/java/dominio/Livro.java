@@ -31,9 +31,11 @@ public class Livro implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="editora")
 	private Editora editora;
+	
 	@ManyToOne
 	@JoinColumn(name="categoria")
 	private Categoria categoria;
+	
 	@OneToMany(mappedBy="livro")
 	private List<ItemEmprestimo> itens;
 	

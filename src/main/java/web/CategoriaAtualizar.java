@@ -12,28 +12,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dominio.Editora;
-import servico.EditoraServico;
+import dominio.Categoria;
+import servico.CategoriaServico;
 import servico.ServicoException;
 import servico.ValidacaoException;
 
-@WebServlet("/editora/inserir")
-public class EditoraInserir extends HttpServlet {
+@WebServlet("/categoria/atualizar")
+public class CategoriaAtualizar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private static String DESTINO = "/editora/listarEditora.jsp";
-	private static String FORM = "/editora/formInserir.jsp";
+	private static String DESTINO = "/categoria/listarCategoria.jsp";
+	private static String FORM = "/categoria/formEditar.jsp";
 	private static String ERRO = "/publico/erro.jsp";
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		EditoraServico es = new EditoraServico();
-		Editora x = Instanciar.editora(request);
+		CategoriaServico cs = new CategoriaServico();
+		Categoria x = Instanciar.categoria(request);
 
 		try {
-			es.validar(x);
-			es.inserir(x);
-			List<Editora> itens = es.buscarTodosOrdenadosPorNome();
+			cs.validar(x);
+			cs.Atualizar(x);
+			List<Categoria> itens =	cs.buscarTodosOrdenadosPorNome();
 			request.setAttribute("itens", itens);
 			request.getRequestDispatcher(DESTINO).forward(request, response);
 		} catch (ServicoException e) {	//validação regra de negócio
@@ -44,6 +44,7 @@ public class EditoraInserir extends HttpServlet {
 			request.setAttribute("item", x);
 			request.getRequestDispatcher(FORM).forward(request, response);
 		}
+		
 		
 	}
 }

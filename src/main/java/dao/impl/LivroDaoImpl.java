@@ -2,8 +2,10 @@ package dao.impl;
 
 import java.math.BigDecimal;
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+
 import dao.LivroDao;
 import dominio.Livro;
 
@@ -74,7 +76,7 @@ public class LivroDaoImpl implements LivroDao{
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Livro> buscarPorTituloValorMinimoValorMaximo(String trecho, BigDecimal vlrMin, BigDecimal vlrMax) {
-		String jpql = "SELECT x FROM Livro x WHERE x.titulo LIKE :p1 and x.valorDiario BETEWEEN :p2 AND :p3";
+		String jpql = "SELECT x FROM Livro x WHERE x.titulo LIKE :p1 and x.valorDiario BETWEEN :p2 AND :p3";	//acrescentar ORDER BY x.titulo
 		Query query = em.createQuery(jpql);
 		query.setParameter("p1", "%"+trecho+"%");
 		query.setParameter("p2", vlrMin);

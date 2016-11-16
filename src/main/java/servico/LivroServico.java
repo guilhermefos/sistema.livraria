@@ -2,6 +2,7 @@ package servico;
 
 import java.math.BigDecimal;
 import java.util.List;
+
 import dao.DaoFactory;
 import dao.LivroDao;
 import dao.Transaction;
@@ -128,9 +129,9 @@ public class LivroServico {
 	 * @return List of Livro objects
 	 * 
 	 */
-	public List<Livro> buscarPorTituloValorMinimoValorMaximo(String trecho, BigDecimal vlrMin, BigDecimal vlrMax) 
+	public List<Livro> buscarPorTituloValorMinimoValorMaximo(String trecho, BigDecimal valorMin, BigDecimal valorMin2) 
 	{
-		return dao.buscarPorTituloValorMinimoValorMaximo(trecho, vlrMin, vlrMax);
+		return dao.buscarPorTituloValorMinimoValorMaximo(trecho, valorMin, valorMin2);
 	}
 
 }
